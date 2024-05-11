@@ -17,6 +17,7 @@
                             <th>Age</th>
                             <th>Phone</th>
                             <th>Address</th>
+                            <th>Gender</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                                 <td>{{ $patient->age }}</td>
                                 <td>{{ $patient->phone }}</td>
                                 <td>{{ $patient->address }}</td>
+                                <td>{{ $patient->gender }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('patients.show', ['patient' => $patient->id]) }}"
                                         class="btn btn-info me-3">Details</a>

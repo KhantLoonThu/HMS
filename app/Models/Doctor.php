@@ -15,4 +15,9 @@ class Doctor extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'appointments');
+    }
 }

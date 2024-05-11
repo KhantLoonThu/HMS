@@ -32,7 +32,7 @@
                                 <td> {{ $doc->department->name }}</td>
                                 <td class="d-flex">
                                     <a href="" class="btn btn-info me-3">Details</a>
-                                    <a href="" class="btn btn-warning me-3">Edit</a>
+                                    <a href="{{ route('doctors.edit', $doc->id) }}" class="btn btn-warning me-3">Edit</a>
                                     <form action="{{ route('doctors.destroy', $doc->id) }}" method="POST">
                                         @csrf
                                         @method('delete')

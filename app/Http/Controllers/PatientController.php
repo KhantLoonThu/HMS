@@ -80,12 +80,14 @@ class PatientController extends Controller
                 'age' => 'required',
                 'phone' => 'required',
                 'address' => 'required',
+                'gender' => 'required',
             ],
             [
                 'name.required' => 'Please fill patient\'s name',
                 'age.required' => 'Please fill patient\'s age',
                 'phone.required' => 'Please fill patient\'s phone number',
                 'address.required' => 'Please fill patient\'s address',
+                'gender.required' => 'Please fill patient\'s gender'
             ]
         );
 

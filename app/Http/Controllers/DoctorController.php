@@ -65,7 +65,9 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $doctor = Doctor::find($id);
+        $departments = Department::all();
+        return view('doctors.edit', ['doctor' => $doctor, 'departments' => $departments]);
     }
 
     /**
@@ -73,7 +75,28 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $doctor = Doctor::find($id);
+
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'specialization' => 'required',
+                'department_id' => 'required',
+            ],
+            [
+                'name.required' => 'Please Enter Doctor\'s name',
+                'email.required' => 'Please Enter Doctor\'s email',
+                'phone.required' => 'Please Enter Doctor\'s phone',
+                'specialization.required' => 'Please Enter Doctor\'s specialization',
+                'department_id.required' => 'Please Enter Doctor\'s department',
+            ]
+        );
+
+        $doctor->update($request->except('_token'));
+        return redirect()->route('doctors.index');
     }
 
     /**

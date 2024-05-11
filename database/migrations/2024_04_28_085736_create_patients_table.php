@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('age');
             $table->string('phone');
             $table->string('address');
+            $table->string('gender');
             $table->timestamps();
         });
     }

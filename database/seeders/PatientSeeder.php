@@ -18,6 +18,7 @@ class PatientSeeder extends Seeder
             'age' => 23,
             'phone' => '09423445489',
             'address' => '54 St. Sanchaung, Yangon',
+            'gender' => 'Female'
         ]);
 
         Patient::create([
@@ -25,6 +26,7 @@ class PatientSeeder extends Seeder
             'age' => 28,
             'phone' => '09423449022',
             'address' => '43 St. North Dagon, Yangon',
+            'gender' => 'Female'
         ]);
 
         Patient::create([
@@ -32,6 +34,7 @@ class PatientSeeder extends Seeder
             'age' => 45,
             'phone' => '09422111567',
             'address' => '115 St. Chanmyatharzi, Mandalay',
+            'gender' => 'Male'
         ]);
     }
 }

@@ -45,6 +45,15 @@
                             @enderror
                         </span>
                     </div>
+                    <div class="my-2">
+                        <label for="gender" class="form-label">Gender</label>
+                        <input type="text" name="gender" id="gender" class="form-control">
+                        <span class="text-danger mt-2">
+                            @error('gender')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
                     <div class="my-3">
                         <button class="btn btn-primary">Submit</button>
                     </div>
