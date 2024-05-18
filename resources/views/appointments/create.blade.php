@@ -11,7 +11,8 @@
                         <div class="col-md-6">
                             <div class="my-2">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    value="{{ old('name') }}">
                                 <span class="text-danger mt-2">
                                     @error('name')
                                         {{ $message }}
@@ -22,7 +23,8 @@
                         <div class="col-md-6">
                             <div class="my-2">
                                 <label for="age" class="form-label">Age</label>
-                                <input type="number" name="age" id="age" class="form-control">
+                                <input type="number" name="age" id="age" class="form-control"
+                                    value="{{ old('age') }}">
                                 <span class="text-danger mt-2">
                                     @error('age')
                                         {{ $message }}
@@ -33,7 +35,8 @@
                         <div class="col-md-4">
                             <div class="my-2">
                                 <label for="phone" class="form-label">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control">
+                                <input type="text" name="phone" id="phone" class="form-control"
+                                    value="{{ old('phone') }}">
                                 <span class="text-danger mt-2">
                                     @error('phone')
                                         {{ $message }}
@@ -44,7 +47,8 @@
                         <div class="col-md-4">
                             <div class="my-2">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" name="address" id="address" class="form-control">
+                                <input type="text" name="address" id="address" class="form-control"
+                                    value="{{ old('address') }}">
                                 <span class="text-danger mt-2">
                                     @error('address')
                                         {{ $message }}
@@ -82,21 +86,26 @@
                         </div>
                         <div class="col-md-4 my-3">
                             <label for="" class="form-label">Preferred Date And Time1</label>
-                            <input type="date" class="form-control" name="date1">
-                            <input type="time" class="form-control mt-3" name="time1">
+                            <input type="date" class="form-control" name="date1" value="{{ old('date1') }}">
+                            <input type="time" class="form-control mt-3" name="time1" value="{{ old('time1') }}">
                         </div>
                         <div class="col-md-4 my-3">
                             <label for="" class="form-label">Preferred Date And Time2</label>
-                            <input type="date" class="form-control" name="date2">
-                            <input type="time" class="form-control mt-3" name="time2">
+                            <input type="date" class="form-control" name="date2" value="{{ old('date2') }}">
+                            <input type="time" class="form-control mt-3" name="time2" value="{{ old('time2') }}">
                         </div>
                         <div class="col-md-4 my-3">
                             <label for="" class="form-label">Diagnosis</label>
-                            <input type="text" class="form-control" name="diagnosis">
+                            <input type="text" class="form-control" name="diagnosis" value="{{ old('diagnosis') }}">
                         </div>
                         <div class="col-md-4 my-3">
                             <label for="" class="form-label">File</label>
                             <input type="file" class="form-control" name="file">
+                            <span class="text-danger">
+                                @error('file')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                     </div>
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
 
-    protected $fillable = ['doctor_id', 'patient_id', 'date1',  'time1', 'date2', 'time2', 'diagnosis', 'file'];
+    // protected $fillable = ['doctor_id', 'patient_id', 'date1',  'time1', 'date2', 'time2', 'diagnosis', 'file'];
+    protected $guarded = ['approved_by'];
     use HasFactory;
 }

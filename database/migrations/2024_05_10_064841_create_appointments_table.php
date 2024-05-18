@@ -21,6 +21,7 @@ return new class extends Migration
             $table->time('time2');
             $table->string('diagnosis');
             $table->string('file');
+            $table->boolean('approved_by')->default(false);
             $table->timestamps();
         });
 

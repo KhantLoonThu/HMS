@@ -14,6 +14,17 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        $patients = [];
+        $doctors = [];
+        $appointments = Appointment::all();
+        foreach ($appointments as $appt) {
+            $patient = Patient::find($appt->patient_id);
+            $doctor = Doctor::find($appt->doctor_id);
+            echo ($doctor->name);
+            array_push($patients, $patient);
+            array_push($doctors, $doctor);
+        }
+        return view('appointments.index', ['appointments' => $appointments, 'patients' => $patients, 'doctors' => $doctors]);
     }
 
     /**
@@ -38,8 +49,8 @@ class AppointmentController extends Controller
                 'address' => 'required',
                 'date1' => 'required',
                 'time1' => 'required',
-                // 'file' => 'required|image|mimes:jpeg,jpg,png,svg|max:2048'
-            ]
+                'file' => 'required|image|mimes:jpeg,jpg,svg|max:2048',
+            ],
         );
 
         $patient = Patient::create(
@@ -52,21 +63,33 @@ class AppointmentController extends Controller
             ]
         );
         $patient_id = $patient->id;
-
-        $appointment = Appointment::create(
-            [
-                'patient_id' => $patient_id,
-                'doctor_id' => $request->doctor,
-                'date1' => $request->date1,
-                'time1' => $request->time1,
-                'date2' => $request->date2,
-                'time2' => $request->time2,
-                'diagnosis' => $request->diagnosis,
-                'file' => $request->file,
-            ]
-        );
-
-        dd($request->all());
+        $imageName = uniqid() . "." . $request->file->extension();
+        // $success = $request->file->move(public_path('uploaded'), $imageName);
+        $success = $request->file->storeAs('imgs', $imageName);
+        if ($success == true) {
+            $appointment = Appointment::create(
+                [
+                    'patient_id' => $patient_id,
+                    'doctor_id' => $request->doctor,
+                    'date1' => $request->date1,
+                    'time1' => $request->time1,
+                    'date2' => $request->date2,
+                    'time2' => $request->time2,
+                    'diagnosis' => $request->diagnosis,
+                    'file' => $imageName,
+                ]
+            );
+        }
+        // $appointment = new Appointment();
+        // $appointment->patient_id = $patient_id;
+        // $appointment->doctor_id = $request->doctor;
+        // $appointment->date1 = $request->date1;
+        // $appointment->time1 = $request->time1;
+        // $appointment->date2 = $request->date2;
+        // $appointment->time2 = $request->time2;
+        // $appointment->diagnosis = $request->diagnosis;
+        // $appointment->file = $request->file;
+        // $appointment->save();
     }
 
     /**
